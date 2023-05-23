@@ -44,13 +44,13 @@ function setup() {
   capa_onoff.changed(capa_trigger);
 
   createSlider(20, 100, leng, 5).position(210, height + 10).input(updateGukpanleng);
-  P_gukpanleng = createP(`극판 면적 : ${leng}`).position(210, height + 20).style('color','#FFFFFF');
+  P_gukpanleng = createP(`극판 면적(미적용) : ${leng}`).position(210, height + 20).style('color','#999999');
 
   createSlider(10, 100, tum).position(410, height + 10).input(updateGgukpangap);
-  P_gukpangap = createP(`극판 사이 간격 : ${110-tum}`).position(410, height + 20).style('color','#FFFFFF');
+  P_gukpangap = createP(`극판 사이 간격(미적용) : ${110-tum}`).position(410, height + 20).style('color','#999999');
 
-  createSlider(0.0, 10, frequency, 2.5).position(700, height + 10).input(updateFrequency).attribute('dlisabled', 'true');
-  P_speed = createP(`진행 속도 : ${frequencyc} (Fixed)`).position(700, height + 20).style('color','#999999');
+  createSlider(0.0, 10, frequency, 2.5).position(700, height + 10).input(updateFrequency).attribute('di1sabled', 'true');
+  P_speed = createP(`속도 배수 : ${frequencyc}배`).position(700, height + 20).style('color','#999999');
 }
 
 function draw() {
@@ -146,18 +146,18 @@ function updateHz() {
 
 function updateGukpanleng() {
   leng = this.value();
-  P_gukpanleng.html(`극판 면적 : ${leng}`);
+  P_gukpanleng.html(`극판 면적(미적용) : ${leng}`);
 }
 
 function updateGgukpangap() {
   tum = this.value();
-  P_gukpangap.html(`극판 사이 간격 : ${110-tum}`);
+  P_gukpangap.html(`극판 사이 간격(미적용) : ${110-tum}`);
 }
 
 function updateFrequency() {
   frequency = this.value();
   frequencyc = this.value()/5;
-  P_speed.html(`진행 속도 : ${frequencyc}`);
+  P_speed.html(`속도 배수 : ${frequencyc}배`);
 }
 
 // 축전기 그리기
