@@ -50,7 +50,7 @@ function setup() {
   P_gukpangap = createP(`극판 사이 간격(미적용) : ${110-tum}`).position(410, height + 20).style('color','#999999');
 
   createSlider(0.0, 10, frequency, 2.5).position(700, height + 10).input(updateFrequency).attribute('di1sabled', 'true');
-  P_speed = createP(`속도 배수 : ${frequencyc}배`).position(700, height + 20).style('color','#999999');
+  P_speed = createP(`속도 배수 : ${frequencyc}배`).position(700, height + 20).style('color','#FFFFFF');
 }
 
 function draw() {
