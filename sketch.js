@@ -18,7 +18,8 @@ let tum = 60;
 let time = 0; 
 let amplitude = ((leng*tum)*(el_size/5))/100; 
 let mode = true;
-let reset_but;
+let fccc;
+let reset_but, reset_but2;
 let see_opt = [true, true];
 
 let capacitorX = -400; // 축전기의 시작 x 위치
@@ -66,8 +67,10 @@ function setup() {
   createSlider(0.0, 20, frequency, 2.5).position(700, height + 10).input(updateFrequency).attribute('dlisabled', 'true');
   P_speed = createP(`속도 배수 : ${frequencyc}배`).position(700, height + 20).style('color','#FFFFFF');
   
-  createSlider(-100, 80, rotated, 5).position(700, height + 70).input(updateRotate).attribute('dlisabled', 'true');
+  fccc = createSlider(-100, 80, rotated, 5).position(700, height + 70).input(updateRotate);
   P_rotate = createP(`그래프 회전(X축) : ${rotated+10}도 (기본)`).position(700, height + 80).style('color','#FFFFFF');
+  reset_but2 = createButton('초기화').position(840, height + 70).size(60, 20);
+  reset_but2.mousePressed(re_fic);
 }
 
 function draw() {
@@ -106,11 +109,24 @@ function draw() {
   rotateX(radians(-rotated));
   let ypos = 0;
   if(see_opt[1]) {
-    stroke(255, 0, 0); 
     strokeWeight(2);
     noFill();
     beginShape();
-    vertex(startX, startY, startZ);
+    stroke(0, 255, 0, 255);
+    vertex(-100, startY, 0);
+    vertex(-100+w, startY, 0);
+    vertex(-100, startY, 0);
+    stroke(255, 0, 0, 255);
+    vertex(-100, startY+amplitude+10, 0);
+    vertex(-100, startY-amplitude-10, 0);
+    vertex(-100, startY, 0);
+    stroke(0, 0, 255, 255);
+    vertex(-100, startY, -amplitude-10);
+    vertex(-100, startY, amplitude+10);
+    vertex(-100, startY, 0);
+    endShape();
+    stroke(255, 0, 0);
+    beginShape();
     for (let i = 0; i < w / xSpacing; i++) {
       x -= xSpacing;
       let posX = startX - i * xSpacing;
@@ -205,7 +221,14 @@ function updateFrequency() {
   
 function re_f(){
     window.location.reload();
-  } 
+} 
+  
+function re_fic(){
+  rotated = 0;
+  P_rotate.html(`그래프 회전(X축) : ${rotated+10}도 (기본)`);
+  fccc.remove();
+  fccc = createSlider(-100, 80, rotated, 5).position(700, height + 70).input(updateRotate);
+} 
 
 // 축전기 그리기
 function drawCapacitor(size, tum, revarse) {
