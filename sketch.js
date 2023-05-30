@@ -59,10 +59,10 @@ function setup() {
   wave_onoff.changed(wave_trigger);
 
   createSlider(20, 100, leng, 5).position(210, height + 10).input(updateGukpanleng);
-  P_gukpanleng = createP(`극판 면적 : ${leng}`).position(210, height + 20).style('color','#FFFFFF');
+  P_gukpanleng = createP(`극판 면적 : ${leng}cm`).position(210, height + 20).style('color','#FFFFFF');
 
   createSlider(10, 90, tum, 5).position(410, height + 10).input(updateGgukpangap);
-  P_gukpangap = createP(`극판 사이 간격 : ${110-tum}`).position(410, height + 20).style('color','#FFFFFF');
+  P_gukpangap = createP(`극판 사이 간격 : ${110-tum}cm`).position(410, height + 20).style('color','#FFFFFF');
 
   createSlider(0.0, 20, frequency, 2.5).position(700, height + 10).input(updateFrequency).attribute('dlisabled', 'true');
   P_speed = createP(`속도 배수 : ${frequencyc}배`).position(700, height + 20).style('color','#FFFFFF');
@@ -84,7 +84,7 @@ function draw() {
   fill('red');
   text('● : 전기장', -440, -140);
   fill('gray');
-  text('보기 쉽도록 하기 위해 수치가 조정되어 있습니다.', 140, -180);
+  text('보기 쉽도록 하기 위해 값이 조정되어 있습니다. (단위가 정확하지 않습니다)', 70, -180);
   // 축전기 그리기
   if(see_opt[0]) {
     if((time+40)*2-(wavelength*capa_revarse*2) < -wavelength) {
@@ -195,13 +195,13 @@ function updateHz() {
 function updateGukpanleng() {
   leng = this.value();
   amplitude = ((leng*tum)*(el_size/5))/100;
-  P_gukpanleng.html(`극판 면적 : ${leng}`);
+  P_gukpanleng.html(`극판 면적 : ${leng}cm`);
 }
 
 function updateGgukpangap() {
   tum = this.value();
   amplitude = ((leng*tum)*(el_size/5))/100;
-  P_gukpangap.html(`극판 사이 간격 : ${110-tum}`);
+  P_gukpangap.html(`극판 사이 간격 : ${110-tum}cm`);
 }
 
 function updateRotate() {
