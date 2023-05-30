@@ -84,7 +84,7 @@ function draw() {
   fill('red');
   text('● : 전기장', -440, -140);
   fill('gray');
-  text('보기 쉽도록 하기 위해 값이 조정되어 있습니다. (단위가 정확하지 않습니다)', 70, -180);
+  text('보기 쉽도록 하기 위해 값이 조정되어 있습니다. (단위가 정확하지 않습니다)', 0, -180);
   // 축전기 그리기
   if(see_opt[0]) {
     if((time+40)*2-(wavelength*capa_revarse*2) < -wavelength) {
